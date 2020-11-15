@@ -80,4 +80,7 @@ public class Ventas {
     public void setDestino(String destino) {
         this.destino = destino;
     }
+
+
+    //asdadsadasdsa
 }
