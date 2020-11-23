@@ -21,7 +21,7 @@ public class ConsultarVentaController {
     @Autowired
     IConsultarVentasInput iConsultarVentasInput;
 
-    @CrossOrigin(origins = "http://localhost:8080")
+
     @GetMapping(value = "/ventas")
     public ResponseEntity<?> obtenerDatosVentas(){
 
