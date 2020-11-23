@@ -8,15 +8,22 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class AppComponent {
-  title = '';
+  
+  valores = [];
+
   constructor(private http: HttpClient){}
 
   ngOnInit(){
 
-    this.http.get("/planeamiento/ventas", {responseType: 'text'}).subscribe(
-      (resp: any) =>{
-        this.title=resp;
-      }
-    )
+    this.http.get("/planeamiento/ventas").toPromise().then(dato =>{
+      console.log(dato);
+
+      for(let i in dato)
+        if(dato.hasOwnProperty(i))
+          this.valores.push(dato[i]);
+    })
+
+
   }
+
 }
