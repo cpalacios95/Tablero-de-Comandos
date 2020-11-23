@@ -2,6 +2,7 @@ package ar.udec.tablerodecomandos.controller.endpoint;
 
 
 import ar.udec.tablerodecomandos.controller.dtomodel.VentasDTO;
+import ar.udec.tablerodecomandos.core.domain.Ventas;
 import ar.udec.tablerodecomandos.core.input.IConsultarVentasInput;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,19 +26,14 @@ public class ConsultarVentaController {
     @GetMapping(value = "/ventas")
     public ResponseEntity<?> obtenerDatosVentas(){
 
-        List<VentasDTO> misVentas = iConsultarVentasInput.obtenerDatosVentas().stream().map(Ventas ->
-                new VentasDTO(Ventas.getMes(),Ventas.getCliente(),Ventas.getImporte(),Ventas.getContado(),
-                        Ventas.getCredito(),Ventas.getMedio(),Ventas.getDestino())).collect(Collectors.toCollection(ArrayList::new));
 
-        return ResponseEntity.ok(misVentas);
+        Ventas ventas = iConsultarVentasInput.obtenerDatosVentas();
+
+        VentasDTO ventasDTO= new VentasDTO(ventas.getMes(), ventas.getCliente(), ventas.getImporte(),ventas.getContado(),ventas.getCredito(),ventas.getMedio(),ventas.getDestino());
+
+        return ResponseEntity.ok(ventasDTO);
     }
 
-    @GetMapping(value = "/ventas/totalventasmes")
-    public ResponseEntity<?> totalVentasMes(){
-        double importeTotal = iConsultarVentasInput.totalVentasMes();
-
-        return ResponseEntity.ok(importeTotal);
-    }
 
 
 }

@@ -17,13 +17,8 @@ public class ConsultarVentasUseCase implements IConsultarVentasInput{
     }
 
     @Override
-    public List<Ventas> obtenerDatosVentas() {
+    public Ventas obtenerDatosVentas() {
         return iConsultarVentasRepository.obtenerDatosVentas();
     }
 
-
-    @Override
-    public double totalVentasMes() {
-        return iConsultarVentasRepository.totalVentasMes();
-    }
 }

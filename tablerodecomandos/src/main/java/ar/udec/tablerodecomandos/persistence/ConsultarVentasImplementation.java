@@ -17,17 +17,7 @@ public class ConsultarVentasImplementation implements IConsultarVentasRepository
     IConsultarVentasCrud iConsultarVentasCrud;
 
     @Override
-    public List<Ventas> obtenerDatosVentas() {
-
-        List<Ventas> misVentas= new ArrayList<>();
-        iConsultarVentasCrud.findAll().forEach(VentasDTO ->misVentas.add(Ventas.getInstance(VentasDTO.getMes(),
-                VentasDTO.getCliente(), VentasDTO.getImporte(), VentasDTO.getContado(),VentasDTO.getCredito(),VentasDTO.getMedio(),
-                VentasDTO.getDestino())));
-        return misVentas;
-    }
-
-    @Override
-    public double totalVentasMes() {
+    public Ventas obtenerDatosVentas() {
         double importeTotal= 0;
         List<Ventas> misVentas= new ArrayList<>();
         iConsultarVentasCrud.findAll().forEach(VentasDTO ->misVentas.add(Ventas.getInstance(VentasDTO.getMes(),
@@ -37,7 +27,8 @@ public class ConsultarVentasImplementation implements IConsultarVentasRepository
         for(Ventas e: misVentas){
             importeTotal+=e.getImporte();
         }
-        return importeTotal;
+        Ventas ventas = Ventas.getInstance("algo", "nn", importeTotal, 0, 0,"internet","chilecito");
+        return ventas;
     }
 
 

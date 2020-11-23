@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface IConsultarVentasRepository {
 
-    List<Ventas> obtenerDatosVentas();
+    Ventas obtenerDatosVentas();
 
-    double totalVentasMes();
 }
